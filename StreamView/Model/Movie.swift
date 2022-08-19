@@ -10,22 +10,22 @@ import UIKit
 
 class Movie :Album{
     var id  : String = ""
-    var url  : String = ""
-    var thumbnail : String = ""
-    var title : String = ""
-    var description : String = ""
-    var genre : [String] = []
+    var url  : String? = ""
+    var thumbnail : String? = ""
+    var title : String? = ""
+    var description : String? = ""
+    var genre : [String]? = []
     
-    var duration : String = ""
-    var rating : String = ""
-    var year : String = ""
-    var releasd : String = ""
-    var production : String = ""
-    var countries : [String] = []
-    var casts : [String] = []
-    var streamLink : String = ""
+    var duration : String? = ""
+    var rating : String? = ""
+    var year : String? = ""
+    var releasd : String? = ""
+    var production : String? = ""
+    var countries : [String]? = []
+    var casts : [String]? = []
+    var streamLink : String? = ""
     
-    init(url : String, thumbnail :String, title : String, description : String, duration : String, rating : String, year : String){
+    init(url : String, thumbnail :String?, title : String?, description : String?, duration : String?, rating : String?, year : String?){
         self.url = url
         self.thumbnail = thumbnail
         self.title = title

@@ -19,6 +19,9 @@ class SeasonsPickerViewController : UIViewController{
     override func viewDidLoad() {
         tableView.reloadData()
     }
+    @IBAction func onCloseAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 extension SeasonsPickerViewController : UITableViewDelegate{

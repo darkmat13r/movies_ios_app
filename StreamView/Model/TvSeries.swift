@@ -15,6 +15,7 @@ class TvSeries : Album{
     var rating : String = ""
     var genre : [String] = []
     var seasons : [ Season] = []
+    
     var latestSeason : String  = ""
     var latestEpidode : String  = ""
     

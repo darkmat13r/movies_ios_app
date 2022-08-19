@@ -9,26 +9,35 @@ import Foundation
 import UIKit
 extension UIViewController{
     func openWithVlc(_ videoSource : ViewSource){
-        var  vlcShareUrl = ""
-        if videoSource.sources2.first?.file.count ?? 0 > 0{
-           vlcShareUrl =  "vlc-x-callback://x-callback-url/stream?url=\(videoSource.sources2.first?.file ?? "")"
-        }else{
-            vlcShareUrl =  "vlc-x-callback://x-callback-url/stream?url=\(videoSource.sources1.first?.file ?? "")"
+        var  url = ""
+        var mp4Source  = videoSource.sources.filter({ source in
+            source.type == "mp4"
+        })
+        if videoSource.sources.isEmpty{
+            showSimpleAlert(msg: "Unable to find video source")
+            return
         }
+        if mp4Source.isEmpty{
+            url = videoSource.sources[0].file
+        }else{
+            url = mp4Source[0].file
+        }
+    
+       
+        var vlcShareUrl = "vlc-x-callback://x-callback-url/stream?url=\(url)"
        
         var caption = ""
         videoSource.tracks.forEach { track in
-            if   track.kind == "captions"{
-                if track.label.caseInsensitiveCompare("english") == .orderedSame{
+            if   track.kind == .captions{
+                if track.label.lowercased().contains("english"){
                     caption = track.file
                 }
             }
         }
-        if caption.count > 0{
-            vlcShareUrl  += "&srt=\(caption)"
+        if caption.isEmpty == false{
+            vlcShareUrl  += "&sub=\(caption)"
         }
         guard let url = URL(string: vlcShareUrl) else {return }
-        print("Open Url  2 \(vlcShareUrl)")
         if UIApplication.shared.canOpenURL(url){
             UIApplication.shared.open(url)
         }else {
@@ -46,4 +55,18 @@ extension UIViewController{
            
             self.present(alert, animated: true, completion: nil)
         }
+    
+    
+    func openMovieDetail(_ movie : Movie){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
+        vc.movie = movie
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openTvSeriesDetails(_ series : TvSeries){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SeriesViewController") as! SeriesViewController
+        vc.series = series
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
+

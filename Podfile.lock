@@ -1,0 +1,67 @@
+PODS:
+  - Alamofire (5.4.4)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
+  - BMPlayer (1.3.2):
+    - BMPlayer/Full (= 1.3.2)
+  - BMPlayer/Core (1.3.2)
+  - BMPlayer/Full (1.3.2):
+    - BMPlayer/Core
+    - NVActivityIndicatorView (~> 4.7.0)
+    - SnapKit (~> 5.0.0)
+  - IQKeyboardManagerSwift (6.5.9)
+  - KRActivityIndicatorView (3.0.7)
+  - KRProgressHUD (3.4.7):
+    - KRActivityIndicatorView (= 3.0.7)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
+  - PaginatedTableView (1.0.1)
+  - Player (0.13.3)
+  - SnapKit (5.0.1)
+  - SwiftSoup (2.3.3)
+  - VersaPlayer (3.0.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.4)
+  - AlamofireImage (~> 4.1)
+  - BMPlayer (~> 1.3.0)
+  - IQKeyboardManagerSwift
+  - KRProgressHUD
+  - PaginatedTableView
+  - Player (~> 0.13.2)
+  - SwiftSoup
+  - VersaPlayer
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - BMPlayer
+    - IQKeyboardManagerSwift
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - NVActivityIndicatorView
+    - PaginatedTableView
+    - Player
+    - SnapKit
+    - SwiftSoup
+    - VersaPlayer
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  BMPlayer: e4b241bd088644d7b89d991a1a65d1b1615d19b3
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
+  KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  Player: e1889a481f14b3bc4065b62bed304c3de3b47dfe
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftSoup: 8e4844e785a975744f2c2606f8b3844ef67eb259
+  VersaPlayer: 0e9a0ea7da786729ffb377dbd17b34641a8265e4
+
+PODFILE CHECKSUM: 56d6dcf563ea12ef3795340acbb74fae545f853d
+
+COCOAPODS: 1.11.2

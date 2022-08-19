@@ -55,7 +55,7 @@ extension HomeSectionCell : UICollectionViewDataSource{
         let album = data[indexPath.row]
         if album is Movie{
             let movie = album as! Movie
-            setImageFromNetwork(url: movie.thumbnail, imageView: cell.thumbnailImg)
+            setImageFromNetwork(url: movie.thumbnail ?? placeHolderImage, imageView: cell.thumbnailImg)
             cell.name.text = movie.title
         }else if album is TvSeries{
             let tvSeries = album as! TvSeries

@@ -14,3 +14,10 @@ class HomeData {
     var latestMovies : [Movie] = []
     var latestSeries : [TvSeries] = []
 }
+
+
+struct Section{
+    var name : String = ""
+    var movies : [Movie] = []
+    var shows : [TvSeries] = []
+}

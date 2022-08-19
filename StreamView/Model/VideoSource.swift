@@ -7,24 +7,23 @@
 
 import Foundation
 struct ViewSource: Codable {
-    let sources1, sources2: [Sources]
+    let sources, sourcesBackup: [Source]
     let tracks: [Track]
-
-    enum CodingKeys: String, CodingKey {
-        case sources1 = "sources_1"
-        case sources2 = "sources_2"
-        case tracks
-    }
 }
 
-// MARK: - Sources
-struct Sources: Codable {
+// MARK: - Source
+struct Source: Codable {
     let file: String
-    let type, label: String
+    let type: String
 }
 
 // MARK: - Track
 struct Track: Codable {
     let file: String
-    let label, kind: String
+    let label: String
+    let kind: Kind
+}
+
+enum Kind: String, Codable {
+    case captions = "captions"
 }

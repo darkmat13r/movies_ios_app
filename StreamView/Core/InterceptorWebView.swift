@@ -29,7 +29,11 @@ class InterceptorWebView : WKWebView{
             return
         }
         let prefs = WKWebpagePreferences()
-        prefs.allowsContentJavaScript = true
+        if #available(iOS 14.0, *) {
+            prefs.allowsContentJavaScript = true
+        } else {
+            // Fallback on earlier versions
+        }
         handlerCallback.interceptDelegate = interceptDelegate
         configuration.defaultWebpagePreferences = prefs
         let userScript = WKUserScript(source: self.getScript(), injectionTime: .atDocumentStart, forMainFrameOnly: false)

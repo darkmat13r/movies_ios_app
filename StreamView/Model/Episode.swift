@@ -10,6 +10,6 @@ class Episode {
     var id : String = ""
     var title : String = ""
     var url : String = ""
-    
+    var servers : [Server] = []
     
 }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import KRProgressHUD
 
-var streamProvider = StreamFlixProvider()
+var streamProvider = DataProvider()
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -16,11 +17,13 @@ class HomeViewController: UIViewController {
     let sectionCellIdentifier = "HomeSectionCell"
    
     
-    var homeData : HomeData? = nil
+    var homeData : [Section]? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        KRProgressHUD.show()
         streamProvider.getHomeData { homeData in
+            KRProgressHUD.dismiss()
             self.homeData = homeData
             self.tableView.reloadData()
         }
@@ -42,31 +45,21 @@ extension HomeViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: sectionCellIdentifier, for: indexPath) as! HomeSectionCell
-        if indexPath.row == 0{
-            cell.title.text = "Trending Movies"
-            cell.data  = homeData?.trendingMovies ?? []
+        guard  let homeData = homeData else{
+            return cell
         }
-        if indexPath.row == 1{
-            cell.title.text = "Trending Series"
-            cell.data  = homeData?.trendingTvSeries ?? []
-        }
-        if indexPath.row == 2{
-            cell.title.text = "Latest Movies"
-            cell.data  = homeData?.latestMovies ?? []
-        }
-        if indexPath.row == 3{
-            cell.title.text = "Latest Series"
-            cell.data  = homeData?.latestSeries ?? []
+        let section = homeData[indexPath.row]
+        cell.title.text = section.name
+        if section.movies.count > 0{
+            cell.data = section.movies
+        }else {
+            cell.data = section.shows
         }
         cell.onSelectMovie = { moview in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
-            vc.movie = moview
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.openMovieDetail(moview)
         }
         cell.onSelectSeries = { series in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SeriesViewController") as! SeriesViewController
-            vc.series = series
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.openTvSeriesDetails(series)
         }
         return cell
     }
